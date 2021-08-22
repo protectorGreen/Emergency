@@ -1,0 +1,13 @@
+{
+    "id": "Lyuan-SignalR",
+    "name": "SignalR 即时通讯组件JS SDK",
+    "version": "1.2",
+    "description": "适用于Asp.net core Signalr  js客户端",
+    "keywords": [
+        "asp.net",
+        "core",
+        "websocket",
+        "socket",
+        "即时通讯"
+    ]
+}

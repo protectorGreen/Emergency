@@ -1,0 +1,207 @@
+{
+	// "leftWindow": {
+	// 	"path": "pages/index/leftwindow/leftwindow",
+	// 	"style": {
+	// 		"width": "350px"
+	// 	}
+	// },
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/mydata/mydata",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "用户信息",
+				"enablePullDownRefresh": false
+			}
+		},
+		// {
+		// 	"path": "pages/index/index",
+		// 	"style": {
+		// 		"navigationBarTitleText": "uni-app"
+		// 	}
+		// },
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": false,
+				"leftWindow": false
+			}
+		},
+		{
+			"path": "pages/login/reg",
+			"style": {
+				"navigationBarTitleText": "注册",
+				"enablePullDownRefresh": false,
+				"leftWindow": false
+			}
+
+		}, {
+			"path": "pages/leftwindow/leftwindow",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			},
+			"matchMedia": {
+				"minWidth": 300
+			}
+		}, {
+			"path": "pages/index/mydata/modifypwd",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "修改密码",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/mydata/deductionnotice",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "推演通知",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/index/mydata/appinfo",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "使用简介",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/index/mydata/applyJoinH",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "加入指挥部",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/mydata/headquantersInfo",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "指挥部信息",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/index/mydata/emergencyplanInfo",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "预案信息",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/index/mydata/performanceInfo",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "推演信息",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/index/mydata/imchat",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "imChat",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/index/mydata/pdfview",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "pdfView",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/index/mydata/sendofficialdoc",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "公文发送",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/index/mydata/testmapn",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/index/mydata/testmap",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/index/mydata/pdfview1",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/mydata/chat",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/mydata/deduction",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+
+			"path": "pages/index/mydata/deductionnew",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/mydata/applyseat",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/mydata/modifyequipment",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/mydata/dispatchequipment",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"pageOrientation": "landscape"
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "debug", //模式名称
+			"path": "pages/login/login", //启动页面，必选
+			"query": "abc" //启动参数，在页面的onLoad函数里面得到
+		}]
+	}
+}

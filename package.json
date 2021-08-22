@@ -1,0 +1,14 @@
+{
+    "id": "emergency",
+    "name": "emergencydeduction",
+    "version": "1.0.0",
+    "description": "deductionsystem",
+    "keywords": [
+        "emergency"
+    ],
+    "dependencies": {
+        "abort-controller": "^3.0.0",
+        "fetch-cookie": "^1.0.0",
+        "node-fetch": "^2.6.1"
+    }
+}
