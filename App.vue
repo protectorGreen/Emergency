@@ -16,6 +16,7 @@
 			console.log(this);
 			var _that = this;
 			let signurl = datas.envconfig.signsrv + "/typrocessHub";
+			
 			///let signurl = datas.envconfig.signsrv + "/chatHub";
 
 			getApp().globalData.signalrConnection = new signalR.HubConnectionBuilder()
