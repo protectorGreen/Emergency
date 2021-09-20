@@ -15,7 +15,7 @@
 						</view>
 					</view>
 					<view class="leftNavItem" v-for="(item,index) in headQuarters" :id="item.UH_ID">
-						<view @click="openHeadQuarters(item)">{{item.H_Name}}</view>
+						<view class="lefttitle" @click="openHeadQuarters(item)">{{item.H_Name}}</view>
 						<view class="icon-item">
 							<uni-icons :type="icontype" :color="'#8f8f94'" size="25" />
 						</view>

@@ -2,15 +2,25 @@ var testdata = require("./testData.js");
 var envconfig = {
 	"debug": true,
 	//"debug": false,
-	"host": "http://192.168.1.106:8070",
-	"localsrv": "http://192.168.3.113",
+	"host": "http://192.168.1.104:10005",
+	"localsrv": "http://192.168.3.122",
 	//"localsrv": "http://192.168.3.103",
 	//"signsrv": "http://localhost:5000",
 	//"signsrv": "http://192.168.3.103:5000",
 	//"signsrv":"http://192.168.1.106:4421",
 	//"signsrv":"http://192.168.1.102:5000",
 	//"signsrv": "http://169.254.79.145:5000",
-	"signsrv": "http://192.168.3.113:5000",
+	//"signsrv": "http://192.168.3.118:5000",
+	//"signsrv": "http://192.168.31.252:8090",
+	//"signsrv": "http://192.168.1.100:8090",
+	//"signsrv": "http://192.168.1.102:5000",
+	//"signsrv": "http://10.6.225.97:5000",
+	//"signsrv": "http://192.168.3.122:5000",
+	//"signsrv": "http://10.6.225.97:5000",	
+	//"signsrv": "ws://10.6.225.97:5000",
+	//"signsrv": "http://10.6.249.186:5000",	
+	"signsrv":"http://192.168.1.104:31693"
+	//http://10.6.225.97/
 };
 
 var currentContext = {

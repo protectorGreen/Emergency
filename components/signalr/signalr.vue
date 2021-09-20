@@ -59,59 +59,6 @@
 
 
 				return;
-
-				
-				/*
-				var username = prompt("Your username");
-				// 设置Cookie值
-				document.cookie = "username=" + username;
-				// 创建连接
-				var connection = $.hubConnection();
-				connection.url = "http://192.168.1.106:56385/messageHub";
-				// 设置查询字符串
-				connection.qs = {
-					username: "qs" + username
-				};
-				var connected = false;
-				connection.logging = true;
-				// 获取代理
-				proxy = connection.createHubProxy("MessageService");
-				// 设置state的值
-				proxy.state.ClientType = "HubNonAutoProxy";
-				// 客户端方法
-				proxy.on("hello", function(message) {
-					var txtResponse = $("#txtResponse")
-					var originalResponse = txtResponse.val();
-					var totalReponse = originalResponse + message + "\n";
-					txtResponse.val(totalReponse);
-				});
-				// 开启连接
-				connection.start({
-						transport: ['webSockets', 'longPolling']
-					})
-					.done(function() {
-						connected = true;
-					})
-					.fail(function() {
-						alert("连接失败");
-					});
-
-				//发送请求
-				$("#btnSend").click(function() {
-					// if (!connected) {
-					// 	alert("没有开启连接");
-					// 	return false;
-					// }
-					var message = $("#txtMessage").val();
-					if (message == "") {
-						alert("请输入内容");
-						return false;
-					}
-					proxy.invoke("hello", message);
-				});
-
-				return;
-				*/
 				// chatHub
 				if (signalrConnection) {
 					return;
@@ -132,7 +79,8 @@
 				//.build();
 
 				//接收消息
-				signalrConnection.on("ReceiveMessage", function(user, message) {
+				//signalrConnection.on("ReceiveMessage", function(user, message) {
+				signalrConnection.on("SendTYMessage", function(user, message) {
 					console.log("user" + user + "/message" + message);
 					_that.$emit("receiveMessage", {
 						"from": user,
@@ -164,7 +112,8 @@
 				if (signalrConnection) {
 					let user = datas.Ur_Data.Ur_ID;
 					let msg_json = JSON.stringify(msg);
-					signalrConnection.invoke("SendMessage", user, 'test').catch(function(err) {
+					signalrConnection.invoke("SendTYMessageToUser", msg_json).catch(function(err) {
+					//signalrConnection.invoke("SendMessage", "user", 'test').catch(function(err) {
 						console.error(err.toString());
 					});
 				}

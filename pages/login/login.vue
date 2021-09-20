@@ -36,7 +36,7 @@
 					url: "reg"
 				})
 			},
-			login: function() {				
+			login: function() {
 				let formdata = this.$refs.form.formData;
 				let data = {
 					Ur_Phone: formdata.Ur_Phone,
@@ -45,11 +45,23 @@
 				let loginSuccess = function(ret) {
 					if (ret && ret['status'] == 0) {
 						let userData = ret['data'];
-						for(var attr in userData){
-							dataer.setUr(attr,userData[attr]);
+						for (var attr in userData) {
+							dataer.setUr(attr, userData[attr]);
 						}
+
+						let userid = parseInt(formdata.Ur_Phone);
+						let userName = userid == 1 ? "abc" : "edf";
+						userid = 3;
+						userName = "小张";
+						if (getApp().globalData.signalrConnection) {
+							getApp().globalData.signalrConnection.invoke("SetUserInfo", userid, userName).catch(
+								function(err) {
+									console.error(err.toString());
+								})
+						}
+
 						uni.navigateTo({
-							url:"../index/mydata/mydata"
+							url: "../index/mydata/mydata"
 						})
 					}
 				}

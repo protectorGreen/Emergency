@@ -4,7 +4,8 @@
 			<leftNav ref="leftnav"></leftNav>
 		</view>
 		<view class="rightarea">
-			<topNav :title="title" @save="save"></topNav>
+			<!-- <topNav :title="title" @save="save"></topNav> -->
+			<topNav :title="title" ></topNav>
 			<button @click="addNewEquip">新增</button>
 			<scroll-view>
 				<view v-for="(item,index) in equips">

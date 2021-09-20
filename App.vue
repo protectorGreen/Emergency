@@ -1,5 +1,5 @@
 <script>
-	//import * as signalR from '../../js_sdk/Lyuan-SignalR/signalr.js';
+	//import * as signalR from 'js_sdk/Lyuan-SignalR/signalr.js';
 	//import * as signalR from 'js_sdk/Lyuan-SignalR/signalr.js';
 	//import * as signalR from "js_sdk/signlar_new.js";
 	import * as signalR from "js_sdk/signalr.js";
@@ -15,7 +15,9 @@
 			console.log('App Launch');
 			console.log(this);
 			var _that = this;
-			let signurl = datas.envconfig.signsrv + "/chatHub";
+			let signurl = datas.envconfig.signsrv + "/typrocessHub";
+			///let signurl = datas.envconfig.signsrv + "/chatHub";
+
 			getApp().globalData.signalrConnection = new signalR.HubConnectionBuilder()
 				.withUrl(signurl, {
 					// accessTokenFactory: () => {
@@ -23,7 +25,6 @@
 					// }
 					skipNegotiation: true,
 					transport: signalR.HttpTransportType.WebSockets
-
 				}).build();
 
 			//接收消息
@@ -34,14 +35,32 @@
 					"message": message
 				});
 			});
+			
+			
+			getApp().globalData.signalrConnection.on("SendTYMessage", function(user, message) {
+				console.log("user" + user + "/message" + message);
+				_that.$emit("receiveMessage", {
+					"from": user,
+					"message": message
+				});
+				// signalrConnection.invoke("sendMessage", "abc", "efg");
+				//sendMessage
+			});
+
+
+			getApp().globalData.signalrConnection.on("GetReturnInfo", function(args) {
+				console.log("GetReturnInfo");
+			})
 
 			getApp().globalData.signalrConnection.start().then(() => {
-					console.log('websocket连接成功！')
+					console.log('websocket连接成功！');
 				})
 				.catch((e) => {
 					//在此处写重试逻辑
 					console.log('websocket连接失败', e)
 				});
+			//SetUserInfo
+
 
 			//this.signalrConnection = signalrConnection;
 		},
@@ -90,7 +109,7 @@
 	page {
 		background-color: #efeff4;
 		height: 100% !important;
-		flex:10;
+		flex: 10;
 		font-size: 28rpx;
 		line-height: 1.8;
 	}

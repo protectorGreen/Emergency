@@ -6,9 +6,9 @@
 		<view style="width:85%">
 			<div style="text-align: center;line-height: 50px;">{{title}}</div>
 		</view>
-		<view>
+		<!-- <view>
 			<button @click="save">保存</button>
-		</view>
+		</view> -->
 	</view>
 </template>
 
