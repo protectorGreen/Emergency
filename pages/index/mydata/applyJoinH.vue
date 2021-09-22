@@ -6,30 +6,33 @@
 		<view class="rightarea">
 			<topNav :title="title"></topNav>
 			<scroll-view class="scrollview" style="margin-top: 30px;">
-				<uni-forms-item name="hqType" label="指挥部类型">
-					<view>
-						<picker @change="hqTypeChange" :value="index" :range="hqTypes" range-key="HT_Type">
-							<view class="uni-input">{{hqTypes[index].HT_Type}}</view>
-						</picker>
-					</view>
-				</uni-forms-item>
-				<uni-forms-item name="hqArea" label="区域">
-					<picker mode="multiSelector" @columnchange="bindAreaChange" :value="multiIndex" :range="multiArray">
-						<view class="uni-input">
-							{{multiArray[0][multiIndex[0]]}},{{multiArray[1][multiIndex[1]]}},{{multiArray[2][multiIndex[2]]}},{{multiArray[3][multiIndex[3]]}}
+				<uni-forms labelPosition="top" labelWidth="100">
+					<uni-forms-item name="hqType" label="指挥部类型">
+						<view>
+							<picker @change="hqTypeChange" :value="index" :range="hqTypes" range-key="HT_Type">
+								<view class="uni-input">{{hqTypes[index].HT_Type}}</view>
+							</picker>
 						</view>
-					</picker>
-				</uni-forms-item>
-				<uni-forms-item name="hq" label="指挥部">
-					<picker @change="selectHeadQuanters" :value="headquanterIndex" range-key="H_Name"
-						:range="headquanters">
-						<view class="uni-input">{{headquanters[headquanterIndex].H_Name}}</view>
-					</picker>
-
-				</uni-forms-item>
-				<uni-forms-item name="save">
-					<button @click="save">保存</button>
-				</uni-forms-item>
+					</uni-forms-item>
+					<uni-forms-item name="hqArea" label="区域">
+						<picker mode="multiSelector" @columnchange="bindAreaChange" :value="multiIndex" :range="multiArray">
+							<view class="uni-input">
+								{{multiArray[0][multiIndex[0]]}},{{multiArray[1][multiIndex[1]]}},{{multiArray[2][multiIndex[2]]}},{{multiArray[3][multiIndex[3]]}}
+							</view>
+						</picker>
+					</uni-forms-item>
+					<uni-forms-item name="hq" label="指挥部">
+						<picker @change="selectHeadQuanters" :value="headquanterIndex" range-key="H_Name"
+							:range="headquanters">
+							<view class="uni-input">{{headquanters[headquanterIndex].H_Name}}</view>
+						</picker>
+					
+					</uni-forms-item>
+					<uni-forms-item name="save">
+						<button @click="save">保存</button>
+					</uni-forms-item>
+				</uni-forms>
+				
 			</scroll-view>
 		</view>
 
@@ -235,12 +238,4 @@
 
 <style>
 	@import '@/common/uni-nvue.css';
-
-	.uni-forms-item__label {
-		width: 120px !important;
-	}
-
-	.uni-forms-item__label .label-text {
-		width: 100px;
-	}
 </style>

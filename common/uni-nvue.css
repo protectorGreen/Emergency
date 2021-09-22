@@ -134,3 +134,7 @@ page {
     font-size: 14px;
     font-weight: normal;
 }
+
+.uni-forms-item__label  {
+	width:200px !important;
+}

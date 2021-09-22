@@ -11,13 +11,13 @@
 					<view class="leftNavItem" v-for="(item,index) in joinH">
 						<view class="lefttitle" @click="changePage(item)" :id="item.key">{{item.name}}</view>
 						<view class="icon-item">
-							<uni-icons :type="icontype" :color="'#8f8f94'" size="25" />
+							<uni-icons :type="icontype" :color="'#8f8f94'" size="18" />
 						</view>
 					</view>
 					<view class="leftNavItem" v-for="(item,index) in headQuarters" :id="item.UH_ID">
 						<view class="lefttitle" @click="openHeadQuarters(item)">{{item.H_Name}}</view>
 						<view class="icon-item">
-							<uni-icons :type="icontype" :color="'#8f8f94'" size="25" />
+							<uni-icons :type="icontype" :color="'#8f8f94'" size="18" />
 						</view>
 					</view>
 				</scroll-view>
@@ -25,33 +25,36 @@
 					<view class="leftNavItem" v-for="(item,index) in infors" :id="item.key">
 						<view class="lefttitle" @click="changePage(item)">{{item.name}}</view>
 						<view class="icon-item">
-							<uni-icons :type="icontype" :color="'#8f8f94'" size="25" />
+							<uni-icons :type="icontype" :color="'#8f8f94'" size="18" />
 						</view>
 					</view>
 				</scroll-view>
 				<scroll-view data-iPage="msg" v-show="'msg'== currentpage?true:false">
-					<view class="leftNavItem" v-for="(item,index) in msgs" @click="changePage(item)" :id="item.key">
-						<view class="lefttitle">{{item.name}}</view>
+					<view class="msgView" v-for="(item,index) in msgs" @click="changePage(item)" :id="item.key">
+						<view class="">{{item.name}}</view>
 						<uni-badge size="small" :text="2" absolute="righttop" type="primary">
 							<view>{{item.lasttime}}</view>
 						</uni-badge>
 					</view>
 				</scroll-view>
 				<view date-iPage="deduction" v-show="'deduction'== currentpage?true:false">
-					<view class="leftNavItem" @click="changePage(item)" :id="item.key"
+					<view class="leftNavItem leftnotice" @click="changePage(item)" :id="item.key"
 						v-for="(item,index) in deductionbtns">
 						<view class="lefttitle">{{item.name}}</view>
 						<view class="icon-item">
-							<uni-icons :type="icontype" color="#8f8f94" size="25" />
+							<uni-icons :type="icontype" color="#8f8f94" size="18" />
 						</view>
 					</view>
-					<view @click="openchatitem(item)" class="leftNavItem" v-for="(item,index) in deductions"
-						:id="item.PR_ID">
-						<view class="icon-item">
-							<uni-icons type="contact" :color="item.color" size="25" />
+					<view style="width: 90%;display: flex;">
+						<view @click="openchatitem(item)" style="text-align: center;" class="" v-for="(item,index) in deductions"
+							:id="item.PR_ID">
+							<view class="chat-icon-item">
+								<uni-icons type="contact" :color="item.color" size="18" />
+							</view>
+							{{item.PR_Name}}
+							<!-- <view style="padding:15px 0px;">{{item.PR_Name}}</view> -->
 						</view>
-						<view style="padding:15px 0px;">{{item.PR_Name}}</view>
-					</view>
+					</view>					
 				</view>
 			</view>
 			<view ref="leftColBottom" class="window-bottom-content" style="background-color: #f7f7f7;">
@@ -65,7 +68,7 @@
 			</view>
 		</view>
 
-		<view>
+		<view class="chatclass">
 			<uni-popup class="chatpopup"
 				style="width: 300px;height: 300px;display: flex;flex-direction: column;justify-content: space-between;"
 				type="dialog" ref="multichatpop" background-color="#fff">
@@ -532,10 +535,18 @@
 		display: flex;
 		box-sizing: border-box;
 		/* #endif */
-		width: 180rpx;
+		/* width: 90rpx; */
 		padding: 30rpx 10rpx;
 		text-align: center;
 		flex-direction: column;
+	}
+	
+	.chat-icon-item{
+		disp: flex;
+		box-si: border-box;
+		text-align: center;
+		flex-direction: column;
+		width: 100px;
 	}
 
 	/* .uni-icons{
@@ -570,7 +581,17 @@
 	.leftNavItem {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-around;
-		line-height: 40px;
+		justify-content: space-between;
+		line-height: 20px;
+	}
+
+	/* .leftnotice{
+		padding: 10px 10px;
+	} */
+	.msgView {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 10px 10px;
 	}
 </style>
