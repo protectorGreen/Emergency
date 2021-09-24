@@ -8,7 +8,7 @@
 			</view>
 			<view ref="leftColCenter" :style="[{height:colCenterHeight}]" class="window-center-content">
 				<scroll-view data-iPage="headquarterspage" v-show="'headquarterspage'== currentpage?true:false">
-					<view class="leftNavItem" v-for="(item,index) in joinH">
+					<view class="leftNavItem" v-bind:for="(item,index) in joinH">
 						<view class="lefttitle" @click="changePage(item)" :id="item.key">{{item.name}}</view>
 						<view class="icon-item">
 							<uni-icons :type="icontype" :color="'#8f8f94'" size="18" />
@@ -45,7 +45,7 @@
 							<uni-icons :type="icontype" color="#8f8f94" size="18" />
 						</view>
 					</view>
-					<view style="width: 90%;display: flex;">
+					<view style="width: 90%;display: flex;flex-wrap: wrap;">
 						<view @click="openchatitem(item)" style="text-align: center;" class="" v-for="(item,index) in deductions"
 							:id="item.PR_ID">
 							<view class="chat-icon-item">
