@@ -1,7 +1,4 @@
 <script>
-	//import * as signalR from 'js_sdk/Lyuan-SignalR/signalr.js';
-	//import * as signalR from 'js_sdk/Lyuan-SignalR/signalr.js';
-	//import * as signalR from "js_sdk/signlar_new.js";
 	import * as signalR from "js_sdk/signalr.js";
 	import leftNav from "components/leftNav/leftNav.vue";
 	import topNav from "components/topNav/topNav.vue";
