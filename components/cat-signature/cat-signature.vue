@@ -2,8 +2,8 @@
 	<view v-if="visibleSync" class="cat-signature" :class="{'visible':show}" @touchmove.stop.prevent="moveHandle">
 		<view class="mask" @tap="close" />
 		<view class="content">
-			<canvas class='firstCanvas' :canvas-id="canvasId" @touchmove='move' @touchstart='start($event)' @touchend='end'
-			 @touchcancel='cancel' @longtap='tap' disable-scroll='true' @error='error' />
+			<canvas class='firstCanvas' :canvas-id="canvasId" @touchmove='move' @touchstart='start($event)'
+				@touchend='end' @touchcancel='cancel' @longtap='tap' disable-scroll='true' @error='error' />
 			<view class="btns">
 				<view class="btn" @tap="clear">清除</view>
 				<view class="btn" @tap="save">保存</view>
@@ -24,34 +24,34 @@
 			canvash = canvasw * 9 / 16;
 		},
 	})
-	export default{
-		name:'cat-signature',
-		props:{
+	export default {
+		name: 'cat-signature',
+		props: {
 			visible: {
 				type: Boolean,
 				default: false
 			},
-			canvasId:{
+			canvasId: {
 				type: String,
 				default: 'firstCanvas'
 			}
 		},
-		data(){
-			return{
-				show:false,
+		data() {
+			return {
+				show: false,
 				visibleSync: false,
-				signImage:'',
-				hasDh:false,
+				signImage: '',
+				hasDh: false,
 			}
 		},
-		watch:{
+		watch: {
 			visible(val) {
 				this.visibleSync = val;
 				this.show = val;
 				this.getInfo()
 			}
 		},
-		
+
 		created(options) {
 			this.visibleSync = this.visible
 			this.getInfo()
@@ -59,10 +59,10 @@
 				this.show = this.visible;
 			}, 100)
 		},
-		methods:{
-			getInfo(){
+		methods: {
+			getInfo() {
 				//获得Canvas的上下文
-				content = uni.createCanvasContext(this.canvasId,this)
+				content = uni.createCanvasContext(this.canvasId, this)
 				//设置线的颜色
 				content.setStrokeStyle("#000")
 				//设置线的宽度
@@ -78,11 +78,11 @@
 				this.hasDh = false;
 				this.$emit('close')
 			},
-			moveHandle(){
-				
+			moveHandle() {
+
 			},
 			// 画布的触摸移动开始手势响应
-			start(e){
+			start(e) {
 				let point = {
 					x: e.touches[0].x,
 					y: e.touches[0].y,
@@ -101,30 +101,30 @@
 					this.draw(touchs)
 				}
 			},
-			
+
 			// 画布的触摸移动结束手势响应
 			end: function(e) {
 				//清空轨迹数组
 				for (let i = 0; i < touchs.length; i++) {
 					touchs.pop()
 				}
-			
+
 			},
-			
+
 			// 画布的触摸取消响应
 			cancel: function(e) {
 				// console.log("触摸取消" + e)
 			},
-			
+
 			// 画布的长按手势响应
 			tap: function(e) {
 				// console.log("长按手势" + e)
 			},
-			
+
 			error: function(e) {
 				// console.log("画布触摸错误" + e)
 			},
-			
+
 			//绘制
 			draw: function(touchs) {
 				let point1 = touchs[0]
@@ -135,7 +135,7 @@
 				content.stroke()
 				content.draw(true);
 				touchs.shift()
-				
+
 			},
 			//清除操作
 			clear: function() {
@@ -146,29 +146,35 @@
 				this.hasDh = false;
 				this.$emit('clear')
 			},
-			save(){
+			save() {
 				var that = this;
-				if(!this.hasDh){
-					uni.showToast({title:'请先签字',icon:'none'})
+				if (!this.hasDh) {
+					uni.showToast({
+						title: '请先签字',
+						icon: 'none'
+					})
 					return;
 				}
-				uni.showLoading({title:'生成中...',mask:true})
-				setTimeout(()=>{
+				uni.showLoading({
+					title: '生成中...',
+					mask: true
+				})
+				setTimeout(() => {
 					uni.canvasToTempFilePath({
 						canvasId: this.canvasId,
 						success: function(res) {
 							that.signImage = res.tempFilePath;
-							that.$emit('save',res.tempFilePath);
+							that.$emit('save', res.tempFilePath);
 							uni.hideLoading()
 							that.hasDh = false;
 							that.show = false;
 						},
-						fail:function(err){
+						fail: function(err) {
 							console.log(err)
 							uni.hideLoading()
 						}
-					},this)
-				},100)
+					}, this)
+				}, 100)
 			}
 		}
 	}
@@ -178,7 +184,8 @@
 	.cat-signature.visible {
 		visibility: visible
 	}
-	.cat-signature{
+
+	.cat-signature {
 		display: block;
 		position: fixed;
 		top: 0;
@@ -189,18 +196,68 @@
 		z-index: 11;
 		height: 100vh;
 		visibility: hidden;
-		.mask{display: block;opacity: 0;position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, .4);transition: opacity .3s;}
-		.content{display: block;position: absolute;top: 0;left: 0;bottom:0;right: 0;margin: auto; width:94%;height: 500upx;background: #fff;border-radius: 8upx;box-shadow: 0px 3px 3px #333;
+
+		.mask {
+			display: block;
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, .4);
+			transition: opacity .3s;
+		}
+
+		.content {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+			width: 94%;
+			height: 500upx;
+			background: #fff;
+			border-radius: 8upx;
+			box-shadow: 0px 3px 3px #333;
+
 			// canvas
-			.firstCanvas {background-color: #fff;width: 100%;height: 400upx;}
+			.firstCanvas {
+				background-color: #fff;
+				width: 100%;
+				height: 400upx;
+			}
+
 			// canvas
-			
-			.btns{padding: 0 15px;height: 100upx;overflow: hidden; position: absolute;bottom: 10upx;left: 0;right: 0;margin: auto;display: flex;justify-content: space-between;
-				.btn{width: 40%;text-align: center;font-size: 28upx;height:60upx;line-height: 60upx;background-color: #999;color: #fff;border-radius: 6upx;}
+
+			.btns {
+				padding: 0 15px;
+				height: 100upx;
+				overflow: hidden;
+				position: absolute;
+				bottom: 10upx;
+				left: 0;
+				right: 0;
+				margin: auto;
+				display: flex;
+				justify-content: space-between;
+
+				.btn {
+					width: 40%;
+					text-align: center;
+					font-size: 28upx;
+					height: 60upx;
+					line-height: 60upx;
+					background-color: #999;
+					color: #fff;
+					border-radius: 6upx;
+				}
 			}
 		}
 	}
-	
+
 	.visible .mask {
 		display: block;
 		opacity: 1

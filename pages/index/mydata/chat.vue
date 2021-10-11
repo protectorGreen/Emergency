@@ -4,7 +4,7 @@
 			<leftNav ref="leftnavi" @onTextMsg="onTextMsg"></leftNav>
 		</view>
 		<view class="rightarea">
-			<button @click="test1()"></button>
+			<!-- <button @click="test1()"></button> -->
 			<topNav :title="title"></topNav>
 			<scroll-view class="rightscroll">
 				<easyChat v-on:sendmsg="sendmsg" v-on:test="test" ref="chat" :testList="testlist"></easyChat>
@@ -182,12 +182,12 @@
 				this.$refs.docpop.close();
 			},
 			sendDoc: function() {
-				if(App().globalData.signalrConnection){
+				if(getApp().globalData.signalrConnection){
 					let centMsg = {
 						
 					};
 					let msg = JSON.stringify()
-					App().globalData.signalrConnection.invoke("SendTYMessageToUser","");
+					getApp().globalData.signalrConnection.invoke("SendTYMessageToUser","");
 				}
 				this.$refs.docpop.close();
 			},

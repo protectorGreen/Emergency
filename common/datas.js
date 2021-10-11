@@ -2,7 +2,8 @@ var testdata = require("./testData.js");
 var envconfig = {
 	"debug": true,
 	//"debug": false,
-	"host": "http://192.168.1.104:10005",
+	"host":"http://39.105.124.54",
+	// "host": "http://192.168.1.104:10005",
 	"localsrv": "http://192.168.3.122",
 	//"localsrv": "http://192.168.3.103",
 	//"signsrv": "http://localhost:5000",
@@ -239,15 +240,6 @@ function getEpAndPerormance(paramData, successfunc, failfunc) {
 		request("/v1/Tem/QueryEmergencyPlan", paramData, successfunc, failfunc);
 	}
 }
-
-// PR_ID
-// PR_Name
-// P_ID
-// Ur_ID
-// HR_ID
-// PR_ApprovalStatue
-// IsDel
-// Remark
 
 // 获取推演下席位
 function getPerformanceRole(paramData, successfunc, failfunc) {

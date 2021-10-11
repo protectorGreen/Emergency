@@ -13,7 +13,7 @@
 			console.log(this);
 			var _that = this;
 			let signurl = datas.envconfig.signsrv + "/typrocessHub";
-			
+
 			///let signurl = datas.envconfig.signsrv + "/chatHub";
 			getApp().globalData.signalrConnection = new signalR.HubConnectionBuilder()
 				.withUrl(signurl, {
@@ -32,8 +32,8 @@
 					"message": message
 				});
 			});
-			
-			
+
+
 			getApp().globalData.signalrConnection.on("SendTYMessage", function(user, message) {
 				console.log("user" + user + "/message" + message);
 				_that.$emit("receiveMessage", {
@@ -77,7 +77,8 @@
 	/* #ifdef H5 */
 	@media screen and (min-width: 400) {
 		body {
-			overflow-y: scroll;
+			/* overflow-y: scroll; */
+			overflow-y: auto;
 		}
 	}
 
@@ -113,7 +114,8 @@
 
 	.indexPage {
 		height: 100%;
-		overflow: scroll;
+		/* overflow: scroll; */
+		overflow: auto;
 		display: flex;
 		/* flex: 10; */
 		/* flex-direction: row !important; */
@@ -133,7 +135,8 @@
 	}
 
 	.rightscroll {
-		overflow: scroll;
+		/* overflow: scroll; */
+		overflow: auto;
 		/* min-height: 600px; */
 		height: 100%;
 	}
@@ -259,7 +262,8 @@
 		width: 100%;
 		/* flex:8; */
 		/* flex-grow: 9 !important; */
-		overflow-y: scroll;
+		/* overflow-y: scroll; */
+		overflow-y: auto;
 	}
 
 	.window-bottom-content {
@@ -292,7 +296,8 @@
 	}
 
 	.uni-scroll-view>.uni-scroll-view {
-		overflow: scroll !important;
+		/* overflow: scroll !important; */
+		overflow-y: auto !important;
 	}
 
 	.emergency-popup-header {
